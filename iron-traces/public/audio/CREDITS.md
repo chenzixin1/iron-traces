@@ -53,3 +53,14 @@ CC0 1.0: https://creativecommons.org/publicdomain/zero/1.0/
 原始文件：`shotguncock_0.wav`，作者注明以气枪录制。派生文件：`foley/breech.ogg`，转单声道、降调、高通及限幅；用作火炮机械动作拟音，不宣称是真实火炮装填录音。
 
 现有 qubodup 炮声及 Michel Baradari 爆炸声继续使用，加入距离/343秒传播延迟、低通反射尾声和机械层。未加入未被物理系统模拟的“跳弹”或“穿透”判定音。
+
+## 谢尔曼行驶实录（当前发动机循环）
+
+**Sherman tank: rijden — Beeld en Geluid（荷兰视听研究所）**。
+来源：https://commons.wikimedia.org/wiki/File:Sherman_tank,_rijden_-_SoundCloud_-_Beeld_en_Geluid.ogg
+许可：CC BY-SA 3.0，https://creativecommons.org/licenses/by-sa/3.0/
+原始描述：谢尔曼坦克从远处驶来，在混凝土道路上经过，外部录音；未标明具体子型号与发动机型号。
+
+派生文件 `foley/sherman-drive.ogg` 同样以 **CC BY-SA 3.0** 发布。改动：提取约63–68秒，转单声道，45Hz高通/9kHz低通、动态压缩、200毫秒首尾交叉淡化、OGG编码。游戏根据速度调音高；静止声为行驶录音的游戏化低速处理，不是真实怠速采样。敌车暂共用此录音，通过距离滤波区分，不声称还原德国坦克发动机。
+
+原文件保存在 docs/asset-sources/sherman/original.ogg。之前由汽车改编的 engine.mp3 保留作加载失败备用；未用于正常发动机播放。

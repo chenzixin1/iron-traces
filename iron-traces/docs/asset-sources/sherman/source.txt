@@ -1,0 +1,160 @@
+Sherman tank: van grote afstand aankomen en voorbijrijden, op een betonbaan (exterieur)
+Date
+None-None-None
+Source
+Soundcloud:
+9632342
+Author
+Beeld en Geluid
+Permission
+(
+Reusing this file
+)
+This file is licensed under the
+Creative Commons
+Attribution-Share Alike 3.0 Unported
+license.
+You are free:
+to share
+– to copy, distribute and transmit the work
+to remix
+– to adapt the work
+Under the following conditions:
+attribution
+– You must give appropriate credit, provide a link to the license, and indicate if changes were made. You may do so in any reasonable manner, but not in any way that suggests the licensor endorses you or your use.
+share alike
+– If you remix, transform, or build upon the material, you must distribute your contributions under the
+same or compatible license
+as the original.
+https://creativecommons.org/licenses/by-sa/3.0
+CC BY-SA 3.0
+Creative Commons Attribution-Share Alike 3.0
+true
+true
+This sound file is from the
+Geluid van Nederland project
+,
+an initiative
+by the
+Netherlands Institute for Sound and Vision
+to document what the Netherlands sounds like.
+This tag does not indicate the copyright status of the attached work.
+A normal
+copyright tag
+is still required.
+See
+Commons:Licensing
+.
+čeština
+|
+English
+|
+français
+|
+Nederlands
+|
+polski
+|
++/−
+File history
+Click on a date/time to view the file as it appeared at that time.
+Date/Time
+Thumbnail
+Dimensions
+User
+Comment
+current
+10:42, 18 April 2013
+1 min 42 s
+(7.49 MB)
+MartsniezBot
+(
+talk
+|
+contribs
+)
+{{Geluid van Nederland layout |attachments_uri=https://api.soundcloud.com/tracks/43670951/attachments |video_url=None |track_type=sound effect |release_month=None |original_format=wav |label_name=Nederlands Instituut voor Beeld en Geluid |duration=1021...
+You cannot overwrite this file.
+File usage on Commons
+There are no pages that use this file.
+Transcode status
+Update transcode status
+Format
+Bitrate
+Status
+Encode time
+MP3
+209 kbps
+Completed 00:37, 25 February 2026
+4.0 s
+Metadata
+This file contains additional information such as Exif metadata which may have been added by the digital camera, scanner, or software program used to create or digitize it. If the file has been modified from its original state, some details such as the timestamp may not fully reflect those of the original file. The timestamp is only as accurate as the clock in the camera, and it may be completely wrong.
+Author
+Eigen Opnames
+Copyright holder
+http://creativecommons.org/licenses/by-sa/3.0/
+Short title
+Sherman tank: rijden
+User comments
+Sherman tank: van grote afstand aankomen en voorbijrijden, op een betonbaan (exterieur)
+Software used
+Lavf54.59.106
+Structured data
+Items portrayed in this file
+depicts
+copyright status
+copyrighted
+copyright license
+Creative Commons Attribution-ShareAlike 3.0 Unported
+data size
+7,853,683
+byte
+duration
+102.008
+second
+media type
+application/ogg
+checksum
+27e52583f0fa2c1269896f377a140bb23bdfe375
+determination method or standard
+:
+SHA-1
+Retrieved from "
+https://commons.wikimedia.org/w/index.php?title=File:Sherman_tank,_rijden_-_SoundCloud_-_Beeld_en_Geluid.ogg&oldid=979076267
+"
+Category
+:
+Sounds from Geluid van Nederland to be checked
+Hidden categories:
+CC-BY-SA-3.0
+Sounds from Geluid van Nederland
+This page was last edited on 3 January 2025, at 18:43.
+Files are available under licenses specified on their description page. All structured data from the file namespace is available under the
+Creative Commons CC0 License
+; all unstructured text is available under the
+Creative Commons Attribution-ShareAlike License
+;
+additional terms may apply.
+By using this site, you agree to the
+Terms of Use
+and the
+Privacy Policy
+.
+Privacy policy
+About Wikimedia Commons
+Disclaimers
+Legal & safety contacts
+Code of Conduct
+Developers
+Statistics
+Cookie statement
+Mobile view
+Search
+Search
+Toggle the table of contents
+File
+:
+Sherman tank, rijden - SoundCloud - Beeld en Geluid.ogg
+Add topic
+(RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgHostname":"mw-web.codfw.main-5d84874cb8-z6tqk","wgBackendResponseTime":184,"wgPageParseReport":{"limitreport":{"cputime":"0.035","walltime":"0.050","ppvisitednodes":{"value":359,"limit":1000000},"revisionsize":{"value":1460,"limit":2097152},"postexpandincludesize":{"value":25598,"limit":2097152},"templateargumentsize":{"value":1222,"limit":2097152},"expansiondepth":{"value":13,"limit":100},"expensivefunctioncount":{"value":1,"limit":500},"unstrip-depth":{"value":0,"limit":20},"unstrip-size":{"value":8,"limit":5000000},"entityaccesscount":{"value":1,"limit":400},"timingprofile":["100.00%   42.121      1 Template:Geluid_van_Nederland_layout","100.00%   42.121      1 -total"," 57.00%   24.009      1 Template:Information"," 39.58%   16.673      1 Template:Geluid_van_Nederland"," 31.75%   13.373      1 Template:Geluid_van_Nederland/layout"," 20.03%    8.436      1 Template:Cc-by-sa-3.0"," 16.97%    7.150      1 Template:Cc-by-sa-layout"," 12.27%    5.169      1 Template:Smartlink"," 10.59%    4.461      1 Template:Copyright-tag-still-required","  7.38%    3.107      1 Template:Copyright-tag-still-required/i18n/en"]},"scribunto":{"limitreport-timeusage":{"value":"0.017","limit":"10.000"},"limitreport-memusage":{"value":1007180,"limit":52428800}},"cachereport":{"origin":"mw-api-ext.eqiad.main-747884cc85-67gst","timestamp":"20260822042005","ttl":2592000,"transientcontent":false}}});});
+{"@context":"https:\/\/schema.org","@type":"AudioObject","contentUrl":"https:\/\/upload.wikimedia.org\/wikipedia\/commons\/2\/2d\/Sherman_tank%2C_rijden_-_SoundCloud_-_Beeld_en_Geluid.ogg?utm_source=commons.wikimedia.org&utm_campaign=index&utm_content=original","license":"https:\/\/creativecommons.org\/licenses\/by-sa\/3.0","acquireLicensePage":"\/\/commons.wikimedia.org\/wiki\/File:Sherman_tank,_rijden_-_SoundCloud_-_Beeld_en_Geluid.ogg","name":"Sherman tank, rijden - SoundCloud - Beeld en Geluid","uploadDate":"2013-04-18 10:42:01","duration":"PT1M42S","embedUrl":"https:\/\/commons.wikimedia.org\/wiki\/File:Sherman_tank,_rijden_-_SoundCloud_-_Beeld_en_Geluid.ogg?embedplayer=true","contentSize":7853683,"encodingFormat":"application\/ogg"}

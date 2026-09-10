@@ -17,7 +17,7 @@ const FILES = [
   "fire",
   "metal",
 ] as const;
-const FOLEY = ['impactMetal_heavy_000','impactMetal_heavy_001','impactMetal_heavy_002','impactMetal_light_000','impactPlate_heavy_000','impactMining_000','impactMining_001','impactWood_heavy_000','breech'];
+const FOLEY = ['impactMetal_heavy_000','impactMetal_heavy_001','impactMetal_heavy_002','impactMetal_light_000','impactPlate_heavy_000','impactMining_000','impactMining_001','impactWood_heavy_000','breech','sherman-drive'];
 export class BattleAudio {
   ctx: AudioContext | null = null;
   master: GainNode | null = null;
@@ -120,7 +120,7 @@ export class BattleAudio {
       pan = ctx.createPanner(),
       filter = ctx.createBiquadFilter(),
       gain = ctx.createGain();
-    source.buffer = this.buffers.get(name) ?? this.noise;
+    source.buffer = this.buffers.get(name === "engine" ? "sherman-drive" : name) ?? this.buffers.get(name) ?? this.noise;
     source.loop = loop;
     source.playbackRate.value = rate;
     pan.panningModel = "HRTF";
@@ -211,12 +211,12 @@ export class BattleAudio {
     this.previousReload=t.reload;
     const wanted = new Set<string>();
     for (const tank of [t, ...enemies]) {
-      if (distance(t, tank) > 100) continue;
+      if (distance(t, tank) > 150) continue;
       if(playing && this.enabled && tank.alive && Math.abs(tank.speed)>.3 && distance(t,tank)<40){
         const travel=(this.trackTravel.get(tank.id)??0)+Math.abs(tank.speed)*dt;
         if(travel>.85){
           this.trackTravel.set(tank.id,travel%.85);
-          this.sample('impactMetal_light_000',tank,tank.id===0?.045:.09,0,.55+Math.random()*.15);
+          this.sample('impactMetal_light_000',tank,tank.id===0?.045:.09*Math.max(0,1-distance(t,tank)/40),0,.55+Math.random()*.15);
           if(tank.id===0)this.sample(wet?'impactWood_heavy_000':'impactMining_001',tank,.045,0,.65+Math.random()*.1);
         }else this.trackTravel.set(tank.id,travel);
       }
@@ -243,7 +243,7 @@ export class BattleAudio {
         const speed = Math.abs(tank.speed);
         v.base =
           name === "engine"
-            ? (tank.id === 0 ? 0.24 : 0.65) * (1 + speed * 0.065)
+            ? (tank.id === 0 ? 0.28 : 0.8) * (1 + speed * 0.065) * (tank.id===0 ? 1 : Math.max(0,Math.min(1,(150-distance(t,tank))/35)))
             : 0.5;
         v.gain.gain.setTargetAtTime(playing ? v.base : 0, now, 0.12);
         v.source.playbackRate.setTargetAtTime(
@@ -265,8 +265,10 @@ export class BattleAudio {
       for (const v of [...this.loops.values(), ...this.shots]) {
         const d = distance(t, v.position),
           blocked = d > 4 && !clear(t, v.position);
+        const engine = [...this.loops.entries()].some(([key,voice])=>voice===v && key.endsWith('-engine'));
+        const airCutoff=engine ? (d<4?8500:Math.max(450,8500*Math.exp(-d/28))) : Math.max(1600,18000/(1+d*.02));
         v.filter.frequency.setTargetAtTime(
-          blocked ? 900 : Math.max(1600, 18000 / (1 + d * 0.02)),
+          blocked ? Math.min(650,airCutoff) : airCutoff,
           now,
           0.08,
         );
@@ -341,6 +343,7 @@ export class BattleAudio {
       spatialModel: "HRTF",
       activeVoices:this.voices,
       propagationSpeed:343,
+      engineRecording:"Beeld en Geluid — Sherman tank: rijden / CC BY-SA 3.0",
       foleyLibrary:"Kenney Impact Sounds / CC0",
       loaded: [...this.buffers.keys()],
       failed: [...this.failed],
