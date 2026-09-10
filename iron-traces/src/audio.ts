@@ -17,6 +17,7 @@ const FILES = [
   "fire",
   "metal",
 ] as const;
+const FOLEY = ['impactMetal_heavy_000','impactMetal_heavy_001','impactMetal_heavy_002','impactMetal_light_000','impactPlate_heavy_000','impactMining_000','impactMining_001','impactWood_heavy_000','breech'];
 export class BattleAudio {
   ctx: AudioContext | null = null;
   master: GainNode | null = null;
@@ -36,6 +37,9 @@ export class BattleAudio {
   private testGeneration = 0;
   private lastOcclusion = 0;
   private lastTime = 0;
+  private previousReload = 0;
+  private trackTravel = new Map<number, number>();
+  private reflections: DelayNode | null = null;
   async start() {
     if (!this.ctx) {
       const ctx = (this.ctx = new AudioContext());
@@ -53,6 +57,13 @@ export class BattleAudio {
       limiter.ratio.value = 8;
       limiter.attack.value = 0.003;
       limiter.release.value = 0.18;
+      // Quiet outdoor reflection, after positioning so left/right cues remain intact.
+      this.reflections = ctx.createDelay(1);
+      this.reflections.delayTime.value = .19;
+      const echoFilter = ctx.createBiquadFilter(), echoGain = ctx.createGain();
+      echoFilter.type='lowpass'; echoFilter.frequency.value=1800;
+      echoGain.gain.value=.16;
+      this.reflections.connect(echoFilter); echoFilter.connect(echoGain); echoGain.connect(this.bus);
       this.bus.connect(this.cabin);
       this.cabin.connect(limiter);
       limiter.connect(this.master);
@@ -65,9 +76,9 @@ export class BattleAudio {
         data[i] = v;
       }
       this.loading = Promise.allSettled(
-        FILES.map(async (name) => {
+        [...FILES,...FOLEY].map(async (name) => {
           const res = await fetch(
-            `${import.meta.env.BASE_URL}audio/${name}.mp3`,
+            `${import.meta.env.BASE_URL}audio/${FOLEY.includes(name) ? "foley/"+name+".ogg" : name+".mp3"}`,
           );
           if (!res.ok) throw new Error(name);
           this.buffers.set(
@@ -77,7 +88,7 @@ export class BattleAudio {
         }),
       ).then((results) => {
         this.failed = results.flatMap((r, i) =>
-          r.status === "rejected" ? [FILES[i]] : [],
+          r.status === "rejected" ? [[...FILES,...FOLEY][i]] : [],
         );
       });
     }
@@ -100,8 +111,10 @@ export class BattleAudio {
     base: number,
     loop = false,
     test = false,
+    delay = 0,
+    rate = 1,
   ): Voice | null {
-    if (!this.ctx || !this.bus || this.voices >= 28) return null;
+    if (!this.ctx || !this.bus || this.voices >= (loop ? 18 : 48)) return null;
     const ctx = this.ctx,
       source = ctx.createBufferSource(),
       pan = ctx.createPanner(),
@@ -109,6 +122,7 @@ export class BattleAudio {
       gain = ctx.createGain();
     source.buffer = this.buffers.get(name) ?? this.noise;
     source.loop = loop;
+    source.playbackRate.value = rate;
     pan.panningModel = "HRTF";
     pan.distanceModel = "inverse";
     pan.refDistance =
@@ -136,7 +150,8 @@ export class BattleAudio {
       gain.disconnect();
       pan.disconnect();
     };
-    source.start();
+    if (!loop && !test && this.reflections && (name.startsWith('cannon') || name==='explosion')) pan.connect(this.reflections);
+    source.start(ctx.currentTime + delay);
     return voice;
   }
   private stop(v: Voice) {
@@ -144,6 +159,7 @@ export class BattleAudio {
   }
   reset() {
     this.testGeneration++;
+    this.previousReload=0; this.trackTravel.clear();
     for (const v of this.loops.values()) this.stop(v);
     this.loops.clear();
     for (const v of this.shots) this.stop(v);
@@ -164,6 +180,7 @@ export class BattleAudio {
     const now = this.ctx.currentTime,
       l = this.ctx.listener;
     if (time < this.lastTime) this.reset();
+    const dt=Math.max(0,Math.min(.05,time-this.lastTime));
     this.lastTime = time;
     const len = Math.hypot(forward.x, forward.z) || 1;
     this.listener = {
@@ -188,9 +205,21 @@ export class BattleAudio {
       this.shots.clear();
     }
     this.playing = playing;
+    if(playing && this.enabled && t.alive){
+      if(this.previousReload>0 && t.reload<=0) this.sample('breech',t,interior?.24:.10,0,.85);
+    }
+    this.previousReload=t.reload;
     const wanted = new Set<string>();
     for (const tank of [t, ...enemies]) {
       if (distance(t, tank) > 100) continue;
+      if(playing && this.enabled && tank.alive && Math.abs(tank.speed)>.3 && distance(t,tank)<40){
+        const travel=(this.trackTravel.get(tank.id)??0)+Math.abs(tank.speed)*dt;
+        if(travel>.85){
+          this.trackTravel.set(tank.id,travel%.85);
+          this.sample('impactMetal_light_000',tank,tank.id===0?.045:.09,0,.55+Math.random()*.15);
+          if(tank.id===0)this.sample(wet?'impactWood_heavy_000':'impactMining_001',tank,.045,0,.65+Math.random()*.1);
+        }else this.trackTravel.set(tank.id,travel);
+      }
       const state = damageState(tank),
         burn = state === "burning" || state === "wreck";
       for (const name of ["engine", "fire"]) {
@@ -265,24 +294,27 @@ export class BattleAudio {
       };
       return;
     }
-    const firing = e.type === "fire",
-      destroy = e.type === "destroy";
-    const name = firing
-      ? `cannon-${1 + Math.floor(Math.random() * 3)}`
-      : e.type === "hit"
-        ? "metal"
-        : "explosion";
-    const v = this.make(name, e, destroy ? 1 : firing ? 0.8 : 0.32);
-    if (!v) return;
-    v.source.playbackRate.value = destroy
-      ? 0.86
-      : firing
-        ? 0.97 + Math.random() * 0.06
-        : e.type === "hit"
-          ? 0.72
-          : 1.55;
-    if (!destroy && !firing) v.source.stop(this.ctx.currentTime + 0.6);
-    this.shots.add(v);
+    const d=Math.hypot(e.x-this.listener.x,e.z-this.listener.z);
+    const delay=Math.min(.8,d/343);
+    if(e.type==='fire'){
+      this.sample(`cannon-${1+Math.floor(Math.random()*3)}`,e,.78,delay,.96+Math.random()*.07);
+      // Low, brief mechanical recoil under the muzzle report.
+      this.sample('impactPlate_heavy_000',e,e.owner===0?.16:.08,delay+.025,.55);
+      if(e.owner===0)this.sample('breech',e,this.interior?.20:.08,delay+.55,.8);
+    }else if(e.type==='destroy'){
+      this.sample('explosion',e,.95,delay,.82+Math.random()*.1);
+      this.sample(e.owner===undefined?'impactMining_000':'impactMetal_heavy_002',e,.22,delay+.09,.65);
+      this.sample('impactMining_001',e,.12,delay+.32,.72);
+    }else if(e.type==='hit'){
+      this.sample(`impactMetal_heavy_00${Math.floor(Math.random()*3)}`,e,.36,delay,.72+Math.random()*.18);
+      this.sample('metal',e,.14,delay+.025,.85);
+    }else if(e.type==='wall'){
+      this.sample(Math.random()<.5?'impactMining_000':'impactMining_001',e,.30,delay,.85+Math.random()*.15);
+    }
+  }
+  private sample(name:string,p:Point,gain:number,delay=0,rate=1){
+    const v=this.make(name,p,gain,false,false,delay,rate);
+    if(v)this.shots.add(v);
   }
   async testHeadphones() {
     await this.start();
@@ -307,6 +339,9 @@ export class BattleAudio {
   inspect() {
     return {
       spatialModel: "HRTF",
+      activeVoices:this.voices,
+      propagationSpeed:343,
+      foleyLibrary:"Kenney Impact Sounds / CC0",
       loaded: [...this.buffers.keys()],
       failed: [...this.failed],
       loops: this.loops.size,

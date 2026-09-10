@@ -39,3 +39,17 @@ CC0 1.0: https://creativecommons.org/publicdomain/zero/1.0/
 - This recording remains under CC BY-SA 3.0; attribution and license link must accompany redistribution, and adaptations must use the same or a compatible license. No endorsement of this game is implied.
 - Commons displays copyright-holder permission reviewed by Wikimedia VRT, ticket 2007090610014151. Source page snapshot: `docs/asset-sources/john-michel-allegretto/commons-file-page.html` (verified 2026-09-10).
 - Earlier MIDI and MP3 files are retained as unused earlier versions; the homepage now plays the trimmed OGG.
+
+## 2026-09-10 分层战斗音效升级
+
+新增素材库：**Kenney — Impact Sounds 1.0**，CC0 1.0。
+来源：https://kenney.nl/assets/impact-sounds
+许可：https://creativecommons.org/publicdomain/zero/1.0/
+文件：`foley/impactMetal_heavy_000/001/002.ogg`、`impactMetal_light_000.ogg`、`impactPlate_heavy_000.ogg`、`impactMining_000/001.ogg`、`impactWood_heavy_000.ogg`。
+用于装甲冲击、后坐、墙体碎石与履带拟音。素材本身保留原始 OGG，游戏中随机调节播放速度及响度。履带为金属与地面撞击素材组合，不是谢尔曼履带实录。
+
+**SpringySpringo — Gun reload sounds**，CC0 1.0。
+来源：https://opengameart.org/content/gun-reload-sounds
+原始文件：`shotguncock_0.wav`，作者注明以气枪录制。派生文件：`foley/breech.ogg`，转单声道、降调、高通及限幅；用作火炮机械动作拟音，不宣称是真实火炮装填录音。
+
+现有 qubodup 炮声及 Michel Baradari 爆炸声继续使用，加入距离/343秒传播延迟、低通反射尾声和机械层。未加入未被物理系统模拟的“跳弹”或“穿透”判定音。
