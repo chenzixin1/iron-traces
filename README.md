@@ -1,5 +1,7 @@
 # 铁迹 · Iron Traces
 
+在线试玩：https://iron-traces.pages.dev/
+
 基于 Three.js、TypeScript 和 Vite 的二战背景坦克游戏，附完整设计文档与生成素材。
 
 ![首页](iron-traces/public/images/campaign-menu-no-progress.png)
@@ -38,3 +40,16 @@ W/S 行驶，A/D 转向，鼠标瞄准与射击，1/2 切换弹种，C 切换视
 这是历史背景下的游戏改编，地图、敌情、车组和胜利规则并非真实交战复刻。生成图片不是历史照片。
 
 第三方音频等素材沿用各自许可，详见 [音频署名](iron-traces/public/audio/CREDITS.md) 和 [素材资料](iron-traces/docs/asset-sources/)。本仓库公开不等同于所有素材均为公有领域；未另外授予项目原创代码的开源许可。
+
+## Cloudflare 部署
+
+本次使用 Pages 直接上传，未配置 GitHub 自动部署。
+
+```sh
+cd iron-traces
+npm ci
+npm run build
+npx wrangler@4.86.0 pages deploy dist --project-name iron-traces --branch main
+```
+
+部署需要具备对应 Cloudflare 账户权限的本机登录。
