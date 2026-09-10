@@ -17,7 +17,7 @@ const FILES = [
   "fire",
   "metal",
 ] as const;
-const FOLEY = ['impactMetal_heavy_000','impactMetal_heavy_001','impactMetal_heavy_002','impactMetal_light_000','impactPlate_heavy_000','impactMining_000','impactMining_001','impactWood_heavy_000','breech','sherman-drive'];
+const FOLEY = ['impactMetal_heavy_000','impactMetal_heavy_001','impactMetal_heavy_002','impactMetal_light_000','impactPlate_heavy_000','impactMining_000','impactMining_001','impactWood_heavy_000','breech','sherman-drive','tiger-engine'];
 export class BattleAudio {
   ctx: AudioContext | null = null;
   master: GainNode | null = null;
@@ -113,6 +113,7 @@ export class BattleAudio {
     test = false,
     delay = 0,
     rate = 1,
+    recording = name,
   ): Voice | null {
     if (!this.ctx || !this.bus || this.voices >= (loop ? 18 : 48)) return null;
     const ctx = this.ctx,
@@ -120,7 +121,7 @@ export class BattleAudio {
       pan = ctx.createPanner(),
       filter = ctx.createBiquadFilter(),
       gain = ctx.createGain();
-    source.buffer = this.buffers.get(name === "engine" ? "sherman-drive" : name) ?? this.buffers.get(name) ?? this.noise;
+    source.buffer = this.buffers.get(recording) ?? this.buffers.get(name) ?? this.noise;
     source.loop = loop;
     source.playbackRate.value = rate;
     pan.panningModel = "HRTF";
@@ -232,8 +233,18 @@ export class BattleAudio {
         const key = `${tank.id}-${name}`;
         wanted.add(key);
         let v = this.loops.get(key);
-        if (!v && this.buffers.has(name)) {
-          v = this.make(name, tank, 1, true) ?? undefined;
+        const recording = name === "engine"
+          ? (tank.id === 0 ? "sherman-drive" : "tiger-engine")
+          : name;
+        // Upgrade an early fallback once its vehicle-specific recording finishes loading.
+        const preferred = this.buffers.get(recording);
+        if (v && preferred && v.source.buffer !== preferred) {
+          this.stop(v);
+          this.loops.delete(key);
+          v = undefined;
+        }
+        if (!v && (preferred || this.buffers.has(name))) {
+          v = this.make(name, tank, 1, true, false, 0, 1, recording) ?? undefined;
           if (v) this.loops.set(key, v);
         }
         if (!v) continue;
@@ -344,6 +355,7 @@ export class BattleAudio {
       activeVoices:this.voices,
       propagationSpeed:343,
       engineRecording:"Beeld en Geluid — Sherman tank: rijden / CC BY-SA 3.0",
+      enemyEngineRecording:"Tiger 131 — Tiger Engine Start / Commons marked CC0; adapted engine loop",
       foleyLibrary:"Kenney Impact Sounds / CC0",
       loaded: [...this.buffers.keys()],
       failed: [...this.failed],
@@ -353,6 +365,7 @@ export class BattleAudio {
         id,
         ...v.position,
         cutoff: v.filter.frequency.value,
+        recording: [...this.buffers.entries()].find(([, buffer]) => buffer === v.source.buffer)?.[0] ?? "fallback-noise",
       })),
     };
   }

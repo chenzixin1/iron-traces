@@ -64,3 +64,9 @@ CC0 1.0: https://creativecommons.org/publicdomain/zero/1.0/
 派生文件 `foley/sherman-drive.ogg` 同样以 **CC BY-SA 3.0** 发布。改动：提取约63–68秒，转单声道，45Hz高通/9kHz低通、动态压缩、200毫秒首尾交叉淡化、OGG编码。游戏根据速度调音高；静止声为行驶录音的游戏化低速处理，不是真实怠速采样。敌车暂共用此录音，通过距离滤波区分，不声称还原德国坦克发动机。
 
 原文件保存在 docs/asset-sources/sherman/original.ogg。之前由汽车改编的 engine.mp3 保留作加载失败备用；未用于正常发动机播放。
+
+## German enemy engine — Tiger 131
+
+`tiger-engine.ogg`: adapted from [Tiger Engine Start.webm](https://commons.wikimedia.org/wiki/File:Tiger_Engine_Start.webm), described as Tiger 131 Tank Engine Start (10 February 2017). Author unknown on Commons; uploaded by GamerLag23. Commons marks the file [CC0 1.0](https://creativecommons.org/publicdomain/zero/1.0/). Original linked source: https://www.youtube.com/watch?v=k7qecCydSlE . License attribution reflects the hosting page, with original authorship not independently established.
+
+Changes: extracted seconds 95–102; mono conversion, filtering, compression, normalization and 200 ms loop crossfade. This restored Tiger recording supplies the common German enemy engine, with speed adaptation; it is not a separate authentic recording for each enemy model.
