@@ -1,0 +1,12 @@
+{
+  "model": "minimax/hailuo-3",
+  "prompt": "Locked-off static camera, a single continuous 15-second shot. Animate ONLY the upper landscape of the provided game menu. Same Sherman tank begins small and distant on the lane in first frame and physically drives slowly toward the camera along the lane, naturally growing in perspective until it reaches the original large foreground position at right shown in last frame. Tracks rotate, suspension rocks gently over ruts, subtle dust at ground level. The tank turns very slightly along the curved lane to match final orientation; slow down smoothly during seconds 11-13, settle and idle in place for final 2 seconds. The whole village, walls, trees, road, horizon and framing stay fixed, NO camera movement, NO zoom, NO pan, no cuts. Soft sunlight subtly shifts through clouds, thin smoke drifts very slowly in the distance. Restrained calm after battle, no gunfire or explosions. Preserve vehicle geometry and identity, do not morph or spawn extra tanks. Keep left logo/typography and complete lower campaign menu area pixel-stable and motionless. No new words. Finish matching last reference frame exactly. No audio.",
+  "duration": 15,
+  "resolution": "2K",
+  "aspect_ratio": "16:9",
+  "generate_audio": false,
+  "frame_images": [
+    "public/images/campaign-approach-first.png",
+    "public/images/campaign-approach-last.png"
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "samples": 1201,
+  "durationMs": 20005.90000000012,
+  "p50": 16.699999999999818,
+  "p95": 17.400000000000546,
+  "p99": 17.600000000002183,
+  "max": 17.800000000000182,
+  "over33ms": 0,
+  "over250ms": 0,
+  "buffer": {
+    "width": 1920,
+    "height": 1080
+  },
+  "gpu": "ANGLE (Apple, ANGLE Metal Renderer: Apple M3 Pro, Unspecified Version)",
+  "devHooksPresent": false
+}

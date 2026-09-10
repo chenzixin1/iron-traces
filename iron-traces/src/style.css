@@ -1,0 +1,1808 @@
+:root {
+  font-family: "PingFang SC", "Microsoft YaHei", sans-serif;
+  color: #e9e4d5;
+  background: #30372b;
+  font-synthesis: none;
+  --paper: #e9e2d1;
+  --ink: #343b2b;
+  --muted: #8e9784;
+  --amber: #dbb874;
+  --line: #c2bca040;
+}
+* {
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+  overflow: hidden;
+}
+button {
+  font: inherit;
+  cursor: pointer;
+}
+button:focus-visible,
+a:focus-visible {
+  outline: 2px solid #f6d89b;
+  outline-offset: 5px;
+}
+button:disabled {
+  cursor: default;
+  opacity: 0.43;
+}
+button {
+  color: inherit;
+}
+#scene {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+  touch-action: none;
+}
+#app {
+  height: 100dvh;
+}
+#loading {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  font-size: 18px;
+}
+#vignette {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(
+    ellipse at 58% 42%,
+    transparent 35%,
+    #18201560 100%
+  );
+}
+.topbar {
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  height: 76px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 38px;
+  background: linear-gradient(#1f271de8, #1f271d00);
+  z-index: 5;
+}
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  letter-spacing: 3px;
+  font-family: "Noto Serif SC", "Songti SC", serif;
+  font-weight: 700;
+  font-size: 23px;
+}
+.brand svg {
+  width: 29px;
+  height: 29px;
+}
+.brand small {
+  font-family: Georgia, serif;
+  letter-spacing: 2px;
+  font-size: 11px;
+  font-weight: normal;
+  border-left: 1px solid #a5ac9360;
+  padding-left: 14px;
+  margin-left: 4px;
+}
+.toolbar {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+}
+.tool {
+  border: 1px solid #cdc6aa40;
+  background: #2b332bcc;
+  border-radius: 2px;
+  padding: 8px 12px;
+  color: #e6e0cd;
+  font-size: 12px;
+  letter-spacing: 0.4px;
+}
+.tool:hover {
+  background: #515b43;
+}
+.tool.active {
+  border-color: var(--amber);
+  color: var(--amber);
+}
+.top-center {
+  font-size: 11px;
+  letter-spacing: 2px;
+  color: #d6d6bd;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.live-dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: #b9c68b;
+}
+.screen {
+  position: fixed;
+  inset: 0;
+  z-index: 4;
+}
+.screen[hidden],
+*[hidden] {
+  display: none !important;
+}
+.brief-shade {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    90deg,
+    #1e281df5 0%,
+    #263021eb 29%,
+    #2933218c 46%,
+    transparent 65%
+  );
+  pointer-events: none;
+}
+.brief-content {
+  position: absolute;
+  left: 5.5vw;
+  top: 116px;
+  width: 390px;
+  max-width: 40vw;
+}
+.eyebrow {
+  font-size: 10px;
+  letter-spacing: 3px;
+  color: var(--amber);
+  font-weight: 600;
+  text-transform: uppercase;
+}
+.brief-content h1 {
+  font-family: "Noto Serif SC", "Songti SC", serif;
+  font-size: 64px;
+  line-height: 1.2;
+  font-weight: 600;
+  letter-spacing: 5px;
+  margin: 21px 0 12px;
+}
+.subheading {
+  font:
+    italic 16px Georgia,
+    serif;
+  letter-spacing: 2px;
+  color: #b6bca6;
+  margin-bottom: 26px;
+}
+.tabs {
+  display: flex;
+  gap: 25px;
+  border-bottom: 1px solid #e2d6b32e;
+  margin-bottom: 22px;
+}
+.tab {
+  background: none;
+  border: 0;
+  padding: 10px 0 12px;
+  font-size: 13px;
+  color: #a9b29c;
+  position: relative;
+}
+.tab.active {
+  color: var(--paper);
+}
+.tab.active:after {
+  content: "";
+  height: 2px;
+  background: var(--amber);
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  right: 0;
+}
+.brief-copy {
+  font-size: 13px;
+  line-height: 1.95;
+  color: #c4ccb9;
+  margin: 0 0 20px;
+}
+.info-line {
+  display: flex;
+  justify-content: space-between;
+  font-size: 11px;
+  color: #aab59b;
+  margin: 0 0 14px;
+  gap: 10px;
+}
+.info-line strong {
+  color: #e5dec8;
+  font-weight: 500;
+}
+.tank-spec {
+  border-block: 1px solid #e2d6b32e;
+  padding: 17px 0;
+  margin: 18px 0;
+}
+.tank-spec .name {
+  font-family: Georgia, "Noto Serif SC", "Songti SC", serif;
+  font-size: 22px;
+  letter-spacing: 0.5px;
+}
+.tank-spec .name span {
+  font-size: 11px;
+  color: #b9c09f;
+  float: right;
+  margin-top: 6px;
+}
+.tank-spec p {
+  font-size: 12px;
+  color: #acb89c;
+  line-height: 1.8;
+  margin: 9px 0 0;
+}
+.objectives {
+  font-size: 12px;
+  color: #d7ddcb;
+  line-height: 2;
+}
+.objective-line {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+.objective-line i {
+  width: 4px;
+  height: 4px;
+  background: var(--amber);
+  transform: rotate(45deg);
+}
+.start {
+  width: 100%;
+  background: #ddc28c;
+  color: #303828;
+  padding: 16px 22px;
+  border: 0;
+  border-radius: 2px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 25px;
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: 2px;
+}
+.start:hover {
+  background: #f0d8a4;
+}
+.start span {
+  font-size: 23px;
+  line-height: 1;
+}
+.fiction {
+  font-size: 10px;
+  line-height: 1.8;
+  color: #8f9b83;
+  margin-top: 12px;
+}
+.vehicle-caption {
+  position: absolute;
+  right: 6vw;
+  bottom: 15vh;
+  border-top: 1px solid #e0e1c870;
+  padding-top: 13px;
+  min-width: 210px;
+  text-shadow: 0 1px 8px #263124;
+}
+.vehicle-caption strong {
+  display: block;
+  font:
+    32px Georgia,
+    serif;
+  letter-spacing: 2px;
+}
+.vehicle-caption span {
+  font-size: 11px;
+  letter-spacing: 2px;
+  line-height: 2.5;
+}
+.brief-bottom {
+  position: absolute;
+  bottom: 24px;
+  left: 5.5vw;
+  right: 38px;
+  display: flex;
+  justify-content: space-between;
+  font-size: 10px;
+  letter-spacing: 1.5px;
+  color: #c0c7af;
+}
+.refit-title {
+  font-size: 13px;
+  color: #d7ddc8;
+  margin-bottom: 15px;
+}
+.upgrade {
+  display: block;
+  text-align: left;
+  width: 100%;
+  background: #36412c70;
+  border: 1px solid #75806480;
+  padding: 14px;
+  margin: 10px 0;
+}
+.upgrade.chosen {
+  border-color: var(--amber);
+  background: #7c79592e;
+}
+.upgrade strong {
+  font-size: 13px;
+}
+.upgrade p {
+  font-size: 11px;
+  line-height: 1.7;
+  color: #b6c0a4;
+  margin: 7px 0 0;
+}
+.refit-note {
+  font-size: 11px;
+  line-height: 1.8;
+  color: #c2c9b1;
+}
+.hud {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 3;
+}
+.hud button {
+  pointer-events: auto;
+}
+.mission-panel {
+  position: absolute;
+  top: 101px;
+  left: 34px;
+  max-width: 320px;
+  text-shadow: 0 2px 6px #172414;
+}
+.mission-panel .eyebrow {
+  color: #e1d3aa;
+}
+.mission-panel h2 {
+  font-family: "Noto Serif SC", "Songti SC", serif;
+  font-size: 23px;
+  letter-spacing: 2px;
+  font-weight: 600;
+  margin: 10px 0;
+}
+.mission-panel p {
+  font-size: 12px;
+  line-height: 1.9;
+  margin: 0;
+  color: #e1e2d0;
+}
+.progress-line {
+  height: 3px;
+  background: #313c32a0;
+  margin: 10px 0;
+}
+.progress-line div {
+  height: 100%;
+  width: 0;
+  background: #d0c08b;
+}
+.objective-status {
+  font-size: 12px;
+  color: #ead4a0;
+}
+.minimap-wrap {
+  position: absolute;
+  right: 28px;
+  bottom: 98px;
+  width: 190px;
+  background: #d9d0b9;
+  border: 5px solid #343e2bd9;
+  box-shadow: 0 6px 20px #17211650;
+  pointer-events: auto;
+}
+.minimap-wrap canvas {
+  width: 180px;
+  height: 180px;
+  display: block;
+}
+.map-title {
+  font-size: 9px;
+  color: #283422;
+  display: flex;
+  justify-content: space-between;
+  padding: 5px 5px 0;
+  letter-spacing: 1px;
+}
+.map-hint {
+  font-size: 9px;
+  color: #354130;
+  text-align: center;
+  padding-bottom: 5px;
+}
+.bottom-hud {
+  position: absolute;
+  bottom: 23px;
+  left: 30px;
+  right: 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 20px;
+}
+.vehicle-hud {
+  background: #222e23e3;
+  padding: 15px 19px;
+  border-top: 2px solid #b6bd98;
+  width: 225px;
+}
+.vehicle-hud header {
+  font-size: 11px;
+  letter-spacing: 1.5px;
+  color: #c1c8b3;
+  display: flex;
+  justify-content: space-between;
+}
+.health-row {
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+  margin-top: 8px;
+}
+.health-row strong {
+  font:
+    30px Georgia,
+    serif;
+}
+.health-row span {
+  font-size: 10px;
+  color: #aab89b;
+}
+.health-bar {
+  height: 4px;
+  background: #71765b60;
+  margin-top: 9px;
+}
+.health-bar i {
+  display: block;
+  height: 100%;
+  background: #b6c18b;
+  width: 100%;
+}
+.vehicle-details {
+  display: flex;
+  justify-content: space-between;
+  font-size: 10px;
+  color: #c0c8ab;
+  margin-top: 9px;
+}
+.weapons {
+  display: flex;
+  gap: 7px;
+  align-items: flex-end;
+}
+.ammo-button {
+  background: #243024ed;
+  border: 1px solid #cad0af45;
+  padding: 11px 17px;
+  text-align: left;
+  min-width: 115px;
+  border-radius: 2px;
+}
+.ammo-button.selected {
+  border-color: #e2c68a;
+  background: #4b5034ee;
+}
+.ammo-button .ammo-top {
+  display: flex;
+  justify-content: space-between;
+  gap: 15px;
+  font-size: 10px;
+  color: #d4d9bc;
+}
+.ammo-button strong {
+  font:
+    29px Georgia,
+    serif;
+  display: block;
+  margin-top: 5px;
+}
+.ammo-button small {
+  font-size: 10px;
+  color: #cad0b4;
+}
+.reload-box {
+  font-size: 10px;
+  text-align: center;
+  min-width: 100px;
+  background: #222e23db;
+  padding: 13px 12px;
+  margin-left: 3px;
+}
+.reload-box strong {
+  font:
+    21px Georgia,
+    serif;
+  display: block;
+  color: #e1c98f;
+  margin-bottom: 6px;
+}
+.control-strip {
+  position: absolute;
+  left: 50%;
+  bottom: 149px;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 17px;
+  background: #283426aa;
+  padding: 9px 14px;
+  border-radius: 2px;
+  white-space: nowrap;
+  color: #e0e4d0;
+  font-size: 10px;
+}
+.control-strip kbd {
+  font: 10px inherit;
+  color: #f2d89f;
+  padding-right: 4px;
+}
+.crosshair {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 36px;
+  height: 36px;
+  border: 1px solid #e3e2ca70;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  filter: drop-shadow(0 1px 2px #1c2618);
+}
+.crosshair:before,
+.crosshair:after {
+  content: "";
+  position: absolute;
+  background: #eee9ce;
+}
+.crosshair:before {
+  height: 1px;
+  left: 10px;
+  right: 10px;
+  top: 17px;
+}
+.crosshair:after {
+  width: 1px;
+  top: 10px;
+  bottom: 10px;
+  left: 17px;
+}
+.crosshair.reloading {
+  border-color: #d0a96880;
+}
+.aim-marker {
+  position: absolute;
+  width: 5px;
+  height: 5px;
+  border: 1px solid #ebd3a0;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+}
+.toast {
+  position: absolute;
+  left: 50%;
+  top: 22%;
+  transform: translateX(-50%);
+  padding: 12px 22px;
+  background: #273522e8;
+  border: 1px solid #b0b78b60;
+  color: #e8dfbd;
+  font-size: 13px;
+  text-align: center;
+  max-width: 460px;
+}
+.status-tip {
+  position: absolute;
+  left: 50%;
+  bottom: 205px;
+  transform: translateX(-50%);
+  font-size: 12px;
+  color: #eee1bc;
+  text-shadow: 0 2px 5px #162312;
+  background: #2e3a2699;
+  padding: 8px 14px;
+  white-space: nowrap;
+}
+.damage {
+  position: absolute;
+  inset: 0;
+  box-shadow: inset 0 0 110px #942d1d;
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+.pause-shade {
+  position: absolute;
+  inset: 0;
+  background: #1e291dcc;
+  backdrop-filter: blur(5px);
+}
+.dialog {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 420px;
+  background: #e8e0cb;
+  color: #303b28;
+  padding: 35px 40px;
+  box-shadow: 0 16px 70px #16201666;
+}
+.dialog .eyebrow {
+  color: #7a7852;
+}
+.dialog h2 {
+  font:
+    600 36px "Noto Serif SC",
+    "Songti SC",
+    serif;
+  letter-spacing: 3px;
+  margin: 15px 0 20px;
+}
+.dialog p {
+  font-size: 13px;
+  line-height: 1.9;
+  color: #666d57;
+}
+.dialog button {
+  width: 100%;
+  padding: 13px;
+  border: 1px solid #5a6847;
+  background: transparent;
+  color: #3d4c31;
+  margin-top: 10px;
+  font-size: 13px;
+}
+.dialog button.primary {
+  background: #425237;
+  color: #ede6d0;
+}
+.result-stats {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px 0;
+  border-block: 1px solid #8d967660;
+  margin: 20px 0;
+}
+.result-stats strong {
+  display: block;
+  font:
+    28px Georgia,
+    serif;
+}
+.result-stats small {
+  font-size: 10px;
+  color: #727d60;
+}
+.large-map {
+  width: min(620px, 90vw);
+  padding: 22px;
+}
+.large-map canvas {
+  display: block;
+  width: 100%;
+  aspect-ratio: 1;
+  background: #d8d1b8;
+}
+.large-map h2 {
+  font-size: 24px;
+  margin: 0 0 10px;
+}
+.large-map p {
+  font-size: 11px;
+  margin: 8px 0;
+}
+.error {
+  position: fixed;
+  inset: 0;
+  background: #283225;
+  z-index: 20;
+  padding: 12vh 10vw;
+  font-size: 18px;
+  line-height: 2;
+}
+.error pre {
+  font-size: 12px;
+  white-space: pre-wrap;
+}
+.fps {
+  font-size: 10px;
+  color: #c7ccaf;
+  min-width: 48px;
+}
+.mobile-note {
+  display: none;
+}
+.briefing .hud {
+  display: none;
+}
+.playing #briefing {
+  display: none;
+}
+.playing .top-center {
+  color: #d0d6bc;
+}
+.big-map #mapScreen {
+  display: block;
+}
+.low-health .health-bar i {
+  background: #ce8b6b;
+}
+@media (max-height: 800px) {
+  .brief-content {
+    top: 90px;
+  }
+  .brief-content h1 {
+    font-size: 48px;
+    margin-top: 12px;
+  }
+  .subheading {
+    margin-bottom: 14px;
+  }
+  .tabs {
+    margin-bottom: 14px;
+  }
+  .brief-copy {
+    font-size: 12px;
+    margin-bottom: 12px;
+  }
+  .tank-spec {
+    margin: 12px 0;
+    padding: 12px 0;
+  }
+  .start {
+    margin-top: 15px;
+    padding: 13px 20px;
+  }
+  .brief-bottom {
+    bottom: 15px;
+  }
+  .fiction {
+    margin-top: 8px;
+  }
+  .vehicle-caption {
+    bottom: 18vh;
+  }
+}
+@media (max-width: 1000px) {
+  .topbar {
+    padding: 0 22px;
+  }
+  .top-center {
+    display: none;
+  }
+  .brief-content {
+    left: 4vw;
+    max-width: 47vw;
+    width: 375px;
+  }
+  .brief-shade {
+    background: linear-gradient(
+      90deg,
+      #222d1ef5 0%,
+      #273120d9 39%,
+      transparent 85%
+    );
+  }
+  .control-strip {
+    gap: 10px;
+    font-size: 9px;
+  }
+  .vehicle-caption {
+    right: 4vw;
+    min-width: 150px;
+  }
+  .vehicle-caption strong {
+    font-size: 24px;
+  }
+  .weapons {
+    margin-left: auto;
+  }
+  .minimap-wrap {
+    width: 150px;
+    right: 20px;
+  }
+  .minimap-wrap canvas {
+    width: 140px;
+    height: 140px;
+  }
+  .vehicle-hud {
+    width: 180px;
+  }
+  .ammo-button {
+    min-width: 85px;
+    padding: 9px 12px;
+  }
+}
+@media (max-width: 700px) {
+  .brief-content {
+    max-width: none;
+    width: calc(100% - 48px);
+    left: 24px;
+    top: 90px;
+  }
+  .brief-shade {
+    background: #243020e8;
+  }
+  .brief-content h1 {
+    font-size: 42px;
+  }
+  .vehicle-caption,
+  .brief-bottom,
+  .brand small,
+  .fps {
+    display: none;
+  }
+  .topbar {
+    height: 68px;
+  }
+  .toolbar {
+    gap: 5px;
+  }
+  .tool {
+    padding: 7px;
+    font-size: 10px;
+  }
+  .brief-copy {
+    font-size: 12px;
+  }
+  .mobile-note {
+    display: block;
+    font-size: 11px;
+    color: #dfc592;
+    margin-top: 10px;
+  }
+  .mission-panel {
+    top: 80px;
+    left: 20px;
+  }
+  .mission-panel h2 {
+    font-size: 18px;
+  }
+  .control-strip {
+    display: none;
+  }
+  .bottom-hud {
+    left: 12px;
+    right: 12px;
+    bottom: 12px;
+    gap: 10px;
+  }
+  .vehicle-hud {
+    width: 140px;
+    padding: 10px;
+  }
+  .ammo-button {
+    min-width: 65px;
+    padding: 8px;
+  }
+  .reload-box {
+    display: none;
+  }
+  .minimap-wrap {
+    bottom: 130px;
+    width: 120px;
+    right: 14px;
+  }
+  .minimap-wrap canvas {
+    width: 110px;
+    height: 110px;
+  }
+  .dialog {
+    width: 90vw;
+    padding: 28px;
+  }
+  .status-tip {
+    bottom: 260px;
+  }
+}
+
+.brief-content {
+  max-height: calc(100dvh - 165px);
+  overflow-y: auto;
+  padding-right: 12px;
+  scrollbar-width: thin;
+  scrollbar-color: #8d967355 transparent;
+}
+
+/* The armour aperture itself is rendered in 3D; these are etched labels and instruments. */
+#interiorPanel {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  color: #b7b49c;
+}
+.interior-ident {
+  position: absolute;
+  left: 9%;
+  top: 18%;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  text-shadow: 0 2px 3px #121911;
+}
+.interior-ident span {
+  font:
+    10px Georgia,
+    serif;
+  letter-spacing: 3px;
+  color: #a19d83;
+}
+.interior-ident strong {
+  font:
+    22px "Songti SC",
+    serif;
+  letter-spacing: 4px;
+}
+.interior-ident small {
+  font-size: 10px;
+  color: #8c9684;
+  letter-spacing: 2px;
+}
+.interior-graticule {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 210px;
+  height: 105px;
+  transform: translate(-50%, -50%);
+  opacity: 0.7;
+}
+.interior-graticule svg {
+  width: 100%;
+  height: 100%;
+  fill: none;
+  stroke: #182419;
+  stroke-width: 1.2;
+  filter: drop-shadow(0 0 1px #d5cda260);
+}
+.interior-instruments {
+  position: absolute;
+  left: 50%;
+  bottom: 24%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 27px;
+  font-size: 10px;
+  letter-spacing: 1px;
+  background: #171e19d9;
+  padding: 13px 20px;
+  border: 1px solid #73765c40;
+  white-space: nowrap;
+}
+.interior-instruments b {
+  font-weight: 400;
+  color: #d6c293;
+  margin-left: 10px;
+  font-size: 14px;
+}
+.interior-help {
+  position: absolute;
+  left: 50%;
+  bottom: 18%;
+  transform: translateX(-50%);
+  font-size: 11px;
+  color: #a6ac93;
+  white-space: nowrap;
+}
+.interior-view .mission-panel,
+.interior-view .minimap-wrap,
+.interior-view .control-strip,
+.interior-view .crosshair,
+.interior-view .aim-marker {
+  display: none !important;
+}
+.interior-view #scene {
+  cursor: crosshair;
+}
+.interior-view .topbar {
+  background: #121b17c7;
+}
+.interior-view .vehicle-hud,
+.interior-view .ammo-button,
+.interior-view .reload-box {
+  background: #171f1bdd;
+  border-color: #747d6559;
+}
+.interior-view .ammo-button.selected {
+  border-color: #b5a577;
+}
+.interior-view .toast {
+  top: 25%;
+  background: #18241fe8;
+  font-size: 12px;
+}
+.interior-view .status-tip {
+  bottom: 32%;
+  font-size: 11px;
+  background: #18241fdd;
+  color: #aeb69c;
+}
+.interior-view .health-row strong {
+  font-size: 25px;
+}
+.interior-view .damage {
+  box-shadow: inset 0 0 70px #802e23;
+}
+.interior-view .fps {
+  color: #89977e;
+}
+@media (max-height: 750px) {
+  .interior-ident {
+    top: 15%;
+  }
+  .interior-instruments {
+    bottom: 25%;
+  }
+  .interior-help {
+    bottom: 19%;
+    font-size: 10px;
+  }
+  .interior-view .status-tip {
+    bottom: 35%;
+  }
+}
+@media (max-width: 800px) {
+  .interior-ident {
+    left: 6%;
+    top: 18%;
+  }
+  .interior-ident strong {
+    font-size: 17px;
+  }
+  .interior-instruments {
+    gap: 10px;
+    padding: 9px;
+    font-size: 9px;
+  }
+  .interior-instruments b {
+    font-size: 11px;
+    margin-left: 4px;
+  }
+  .interior-help {
+    font-size: 9px;
+  }
+  .interior-graticule {
+    width: 140px;
+    height: 70px;
+  }
+}
+
+.brief-art,
+.refit-art {
+  position: absolute;
+  inset: 0;
+  background: url("/images/cover-painted-v2.webp") center center/cover no-repeat;
+  pointer-events: none;
+}
+.refit-art {
+  background-image: url("/images/refit-sherman.webp");
+  opacity: 0;
+  transition: opacity 0.35s ease;
+}
+.show-refit .refit-art {
+  opacity: 1;
+}
+.brief-shade {
+  background: linear-gradient(
+    90deg,
+    #141f16ef 0%,
+    #1b2619da 30%,
+    #1d281e55 48%,
+    transparent 70%
+  );
+}
+
+.brief-bottom a {
+  color: var(--amber);
+  text-underline-offset: 3px;
+}
+
+/* Field dossier: a readable paper document above the live battlefield. */
+.dossier-screen {
+  overflow-y: auto;
+  background:
+    linear-gradient(#171b17df, #171b17ef),
+    url("/images/cover-painted-v2.webp") center/cover fixed;
+  padding: 84px 30px 25px;
+  color: #34372c;
+  scrollbar-color: #a59a7a #202820;
+}
+.dossier {
+  max-width: 1220px;
+  margin: auto;
+  background-color: #e5dcc3;
+  background-image:
+    repeating-linear-gradient(
+      0deg,
+      #73644b05 0px,
+      #73644b05 1px,
+      transparent 1px,
+      transparent 4px
+    ),
+    radial-gradient(ellipse at 30% 20%, #fff9eaa0, transparent 65%);
+  padding: 24px 28px 0;
+  box-shadow: 0 15px 70px #0009;
+  border: 1px solid #b6a989;
+}
+.dossier-heading {
+  text-align: center;
+  position: relative;
+  padding: 0 0 20px;
+  border-bottom: 3px double #918569;
+  margin-bottom: 20px;
+}
+.dossier-heading h1 {
+  font-family: Georgia, "Songti SC", serif;
+  font-size: clamp(36px, 4vw, 58px);
+  letter-spacing: 12px;
+  margin: 4px 0 5px;
+  line-height: 1.1;
+  color: #292c24;
+}
+.dossier-heading p {
+  margin: 0;
+  font-size: 19px;
+  letter-spacing: 5px;
+  font-family: "Songti SC", serif;
+  font-weight: 700;
+}
+.dossier-kicker {
+  font-size: 10px;
+  letter-spacing: 2px;
+  color: #766749;
+  font-weight: 700;
+}
+.dossier-stamp {
+  position: absolute;
+  right: 0;
+  bottom: 24px;
+  border: 2px solid #8b503b88;
+  padding: 6px 10px;
+  color: #89543d;
+  transform: rotate(-5deg);
+  font-size: 12px;
+  letter-spacing: 2px;
+}
+.dossier-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  align-items: stretch;
+}
+.map-paper {
+  position: relative;
+  padding: 15px 16px 10px;
+  border: 1px solid #958768;
+  background: #cfc7ad66;
+  display: flex;
+  flex-direction: column;
+}
+.map-paper header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.map-paper h2 {
+  margin: 0;
+  font:
+    700 22px "Songti SC",
+    serif;
+  letter-spacing: 3px;
+}
+.map-paper canvas {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1;
+  max-height: 430px;
+  object-fit: contain;
+  mix-blend-mode: multiply;
+}
+.map-paper p {
+  font-size: 11px;
+  line-height: 1.8;
+  margin: 5px 0 0;
+  color: #655e49;
+}
+.brief-photo {
+  height: 218px;
+  position: relative;
+  background: #454737;
+  overflow: hidden;
+  border: 5px solid #f3ebd7;
+  box-shadow: 0 2px 5px #463a3122;
+}
+.brief-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: right 52%;
+  transform: scale(1.22);
+  transform-origin: right center;
+}
+.brief-photo span {
+  position: absolute;
+  right: 8px;
+  bottom: 6px;
+  font-size: 10px;
+  background: #202820bb;
+  color: #efe6cb;
+  padding: 3px 6px;
+}
+.orders-paper .tabs {
+  margin: 14px 0 0;
+  border-color: #a7997d;
+}
+.orders-paper .tab {
+  color: #70664d;
+  padding: 9px 0;
+  margin-right: 24px;
+}
+.orders-paper .tab.active {
+  color: #373d29;
+  border-bottom-color: #847039;
+}
+.orders-list {
+  margin: 3px 0 0;
+}
+.orders-list > div {
+  display: grid;
+  grid-template-columns: 84px 1fr;
+  gap: 10px;
+  padding: 10px 2px;
+  border-bottom: 1px solid #b7aa8c88;
+  font-size: 14px;
+  line-height: 1.55;
+}
+.orders-list dt {
+  font-weight: 700;
+}
+.orders-list dd {
+  margin: 0;
+}
+.orders-paper .refit-title {
+  color: #4c5039;
+  margin: 15px 0 8px;
+}
+.orders-paper .upgrade {
+  background: #ded5bd;
+  color: #3b4130;
+  border-color: #a99d7b;
+  padding: 9px 12px;
+  margin-bottom: 5px;
+}
+.orders-paper .upgrade p,
+.orders-paper .refit-note {
+  color: #686049;
+}
+.orders-paper .upgrade.chosen {
+  border-color: #776838;
+  background: #eee3c5;
+}
+.history-paper {
+  margin-top: 23px;
+  border-top: 3px double #918569;
+  padding-top: 18px;
+}
+.history-heading {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  align-items: center;
+}
+.history-heading h2 {
+  font:
+    700 25px "Songti SC",
+    serif;
+  letter-spacing: 2px;
+  margin: 5px 0 12px;
+}
+.reading-tools {
+  display: flex;
+  gap: 14px;
+  align-items: center;
+  font-size: 12px;
+  color: #74684b;
+  white-space: nowrap;
+}
+.reading-tools button {
+  border: 1px solid #918263;
+  background: #e1d4b7;
+  color: #464531;
+  padding: 7px 12px;
+  cursor: pointer;
+}
+.history-chapters {
+  display: flex;
+  gap: 7px;
+  border-bottom: 1px solid #b6a88a;
+  padding-bottom: 11px;
+  flex-wrap: wrap;
+}
+.history-chapters button {
+  background: transparent;
+  border: 0;
+  color: #6b5b3b;
+  padding: 5px 9px;
+  cursor: pointer;
+  font-size: 12px;
+}
+.history-chapters button:hover {
+  background: #cabb96;
+}
+.history-reader {
+  height: 270px;
+  overflow-y: auto;
+  position: relative;
+  padding: 10px 28px 20px 4px;
+  scrollbar-color: #918466 #d8ccb1;
+  scrollbar-width: thin;
+  overscroll-behavior: contain;
+}
+.history-reader section {
+  max-width: 940px;
+  margin: 0 auto 25px;
+}
+.history-reader h3 {
+  font:
+    700 20px "Songti SC",
+    serif;
+  margin: 15px 0 10px;
+  color: #5c4b30;
+}
+.history-reader p {
+  font-size: 16px;
+  line-height: 2.15;
+  text-align: justify;
+  margin: 0;
+  color: #373b2e;
+  letter-spacing: 0.3px;
+}
+.history-reader small {
+  display: block;
+  margin-top: 9px;
+  font-size: 11px;
+  color: #73694f;
+}
+.history-reader a,
+.dossier-actions a {
+  color: #796037;
+  text-underline-offset: 3px;
+}
+.history-end {
+  text-align: center !important;
+  padding: 20px;
+  font-family: "Songti SC", serif;
+}
+.dossier-actions {
+  position: sticky;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  background: #e1d6babf;
+  backdrop-filter: blur(14px);
+  border-top: 1px solid #a99b7b;
+  padding: 13px 0;
+  margin-top: 14px;
+  z-index: 2;
+}
+.dossier-actions p {
+  margin: 0;
+  font-size: 11px;
+  line-height: 1.8;
+  color: #6d654c;
+}
+.dossier-actions .start {
+  width: 280px;
+  margin: 0;
+  background: linear-gradient(#a58c49, #806a35);
+  border: 1px solid #706037;
+  color: #fff2c9;
+  box-shadow:
+    inset 0 0 0 3px #ddc98c66,
+    0 2px 5px #55452c33;
+  font:
+    700 22px "Songti SC",
+    serif;
+  letter-spacing: 3px;
+}
+@media (max-width: 850px) {
+  .dossier-screen {
+    padding: 76px 12px 12px;
+  }
+  .dossier {
+    padding: 18px 16px 0;
+  }
+  .dossier-grid {
+    gap: 14px;
+  }
+  .brief-photo {
+    height: 170px;
+  }
+  .orders-list > div {
+    grid-template-columns: 68px 1fr;
+    font-size: 12px;
+    padding: 7px 0;
+  }
+  .dossier-stamp {
+    display: none;
+  }
+  .history-heading {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+  .reading-tools {
+    margin-bottom: 10px;
+  }
+}
+@media (max-width: 600px) {
+  .dossier-grid {
+    grid-template-columns: 1fr;
+  }
+  .map-paper canvas {
+    max-height: 300px;
+  }
+  .brief-photo {
+    height: 210px;
+  }
+  .dossier-heading h1 {
+    font-size: 36px;
+  }
+  .history-reader {
+    height: 320px;
+    padding-right: 12px;
+  }
+  .history-reader p {
+    font-size: 15px;
+  }
+  .dossier-actions {
+    flex-direction: column;
+    gap: 8px;
+  }
+  .dossier-actions .start {
+    width: 100%;
+  }
+  .dossier-actions p {
+    font-size: 10px;
+  }
+  .dossier-heading p {
+    font-size: 16px;
+  }
+  .reading-tools {
+    gap: 10px;
+  }
+}
+.briefing .fps {
+  display: none;
+}
+.dossier-heading h1 {
+  font-size: 46px;
+  letter-spacing: 9px;
+}
+.dossier-heading {
+  padding-bottom: 12px;
+  margin-bottom: 16px;
+}
+.dossier-heading p {
+  font-size: 17px;
+}
+.map-paper canvas {
+  max-height: 340px;
+}
+.brief-photo {
+  height: 180px;
+}
+.orders-list > div {
+  font-size: 13px;
+  padding: 8px 2px;
+}
+.history-paper {
+  scroll-margin-top: 85px;
+}
+@media (max-width: 600px) {
+  .dossier-heading h1 {
+    font-size: 34px;
+  }
+  .brief-photo {
+    height: 210px;
+  }
+  .map-paper canvas {
+    max-height: 300px;
+  }
+}
+.dossier-actions {
+  position: static;
+  background: #ded1b2;
+  backdrop-filter: none;
+  padding: 14px 12px;
+}
+
+/* Whole generated artwork, with live reading and controls in its reserved areas. */
+.briefing .topbar {
+  display: none;
+}
+.dossier-screen {
+  padding: 0;
+  overflow: hidden;
+  background: #26271f;
+}
+.dossier {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  max-width: none;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  box-shadow: none;
+  background: url("/images/briefing-fullscreen.webp") center/100% 100% no-repeat;
+}
+.dossier-heading,
+.map-paper,
+.brief-photo,
+.dossier .history-chapters,
+.dossier-actions p,
+.dossier .history-heading > div:first-child,
+.dossier #briefPane,
+.dossier #briefTab {
+  display: none !important;
+}
+.dossier-grid,
+.orders-paper,
+.dossier .tabs,
+.dossier-actions {
+  display: contents;
+}
+.dossier .history-paper {
+  position: absolute;
+  left: 54%;
+  top: 54%;
+  width: 37.5%;
+  height: 26.5%;
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+.dossier .history-heading {
+  height: 24px;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+.dossier .reading-tools {
+  font-size: 11px;
+  gap: 10px;
+  margin: 0;
+}
+.dossier .reading-tools button {
+  font-size: 11px;
+  padding: 2px 7px;
+  background: #e7d8bb99;
+}
+.dossier .history-reader {
+  height: calc(100% - 24px);
+  padding: 0 12px 8px 0;
+}
+.dossier .history-reader section {
+  margin-bottom: 18px;
+}
+.dossier .history-reader h3 {
+  font-size: clamp(14px, 1.2vw, 20px);
+  margin: 8px 0;
+}
+.dossier .history-reader p {
+  font-size: clamp(12px, 1.05vw, 18px);
+  line-height: 1.9;
+  letter-spacing: 0;
+}
+.dossier .history-reader small {
+  font-size: 10px;
+}
+.dossier-actions .start {
+  position: absolute;
+  left: 53.8%;
+  top: 83.4%;
+  width: 20.4%;
+  height: 7.5%;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  box-shadow: none;
+  color: #f4d893;
+  font-size: clamp(17px, 2vw, 32px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+}
+.dossier #refitTab {
+  position: absolute;
+  left: 75.6%;
+  top: 83.4%;
+  width: 17%;
+  height: 7.5%;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  color: #eee5cb;
+  font:
+    700 clamp(17px, 1.8vw, 29px) "Songti SC",
+    serif;
+  letter-spacing: 3px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.dossier #refitTab:hover,
+.dossier-actions .start:hover {
+  background: #fff2ca18;
+}
+.dossier #refitPane {
+  position: absolute;
+  left: 54%;
+  top: 53.5%;
+  width: 37.5%;
+  height: 27%;
+  overflow-y: auto;
+  padding: 0 12px 0 0;
+  scrollbar-width: thin;
+}
+.dossier.show-refit .history-paper,
+.show-refit .dossier .history-paper {
+  visibility: hidden;
+}
+.dossier #refitPane .refit-title {
+  margin: 5px 0;
+  font-size: 13px;
+}
+.dossier #refitPane .upgrade {
+  padding: 6px 9px;
+  margin-bottom: 4px;
+}
+.dossier #refitPane .upgrade p {
+  font-size: 11px;
+  line-height: 1.5;
+}
+.dossier #refitPane .refit-note {
+  font-size: 10px;
+}
+@media (max-aspect-ratio: 1/1) {
+  .dossier .reading-tools > span:first-child {
+    display: none;
+  }
+  .dossier .history-paper {
+    left: 53%;
+    width: 39%;
+  }
+  .dossier .history-reader p {
+    font-size: 12px;
+    line-height: 1.7;
+  }
+  .dossier #refitTab {
+    letter-spacing: 0;
+    font-size: 14px;
+  }
+  .dossier-actions .start {
+    letter-spacing: 0;
+    font-size: 14px;
+  }
+}
+.dossier .history-reader,.dossier .history-reader p,.dossier .history-reader h3,.dossier .history-reader small,.dossier .reading-tools,.dossier .reading-tools button {font-family:"Songti SC","STSong","SimSun","Noto Serif CJK SC",serif;}
+.dossier .history-reader p {font-weight:500;color:#393327;}
+/* Larger reading type in the full-screen briefing. */
+.dossier .history-reader p {font-size:clamp(18px,1.4vw,24px);line-height:1.85;}
+.dossier .history-reader h3 {font-size:clamp(20px,1.55vw,27px);line-height:1.5;}
+.dossier .history-reader small {font-size:14px;line-height:1.6;}
+.dossier .reading-tools,.dossier .reading-tools button {font-size:13px;}
+.dossier .history-heading {height:30px;}
+.dossier .history-reader {height:calc(100% - 30px);}
+
+/* The approved artwork stays proportional; real buttons sit over its cards. */
+#campaignMenu{position:fixed;inset:0;z-index:200;background:#151713;display:grid;place-items:center}
+#campaignMenu[hidden]{display:none}
+.campaign-stage{position:relative;width:min(100vw,177.683vh);aspect-ratio:1672/941;overflow:hidden}
+.campaign-art{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
+/* Full-frame footage shares the cover coordinates; only the top battlefield moves. */
+.campaign-hero-video{position:absolute;inset:0;width:100%;height:100%;object-fit:fill;pointer-events:none;opacity:0;clip-path:inset(0 0 55.58% 0);-webkit-mask-image:linear-gradient(to right,transparent 0%,transparent 29%,#000 35%,#000 100%);mask-image:linear-gradient(to right,transparent 0%,transparent 29%,#000 35%,#000 100%)}
+.campaign-hero-video.is-ready{opacity:1}
+@media(prefers-reduced-motion:reduce){.campaign-hero-video{display:none}}
+.campaign-card{position:absolute;left:var(--card-left);top:50.5%;width:15%;height:34%;padding:0;border:1px solid transparent;border-radius:0;background:transparent;overflow:hidden;cursor:pointer;transition:transform .22s ease,box-shadow .22s ease,filter .22s ease;transform-origin:center bottom}
+.card-art{position:absolute;inset:0;background-image:url('/images/campaign-menu-no-progress.png');background-size:666.667% 294.118%;pointer-events:none}
+.campaign-card:hover,.campaign-card:focus-visible{transform:translateY(-2.5%) scale(1.015);box-shadow:0 0 0 2px #d8b76d,0 10px 25px #0008;filter:brightness(1.12);outline:none;z-index:2}
+.campaign-card:active{transform:translateY(0) scale(.985)}
+.card-status{position:absolute;bottom:1%;left:2%;right:2%;height:14%;background:#35362eee;color:#e9dec0;display:grid;place-items:center;font-family:'Songti SC',serif;font-size:clamp(10px,1.25vw,23px)}
+.campaign-card:first-of-type .card-status{background:#503c13;color:#ffe79c}
+.campaign-progress{position:absolute;right:2.8%;top:46.2%;background:#ddd1b9;color:#24231e;font:clamp(10px,1.3vw,24px) 'Songti SC',serif;padding:0 4px}
+.campaign-mute{position:absolute;left:2%;bottom:2%;width:44px;height:44px;border:0;background:#171914;color:#eee1bb;padding:0;font-size:22px;cursor:pointer;border-radius:50%}
+.campaign-mute:hover,.campaign-mute:focus-visible{color:#fff2bb;outline:1px solid #bdaa76}
+.campaign-feedback{position:absolute;left:25%;right:15%;bottom:1.4%;text-align:center;color:#f5deb0;font:clamp(12px,1.1vw,20px) 'Songti SC',serif;pointer-events:none}
+.campaign-back{position:fixed;top:15px;left:18px;z-index:90;background:#24271ee8;color:#eee2c7;border:1px solid #95866c;padding:8px 13px;font:16px 'Songti SC',serif;cursor:pointer}
+body:not(.briefing) .campaign-back,body.at-campaign .campaign-back{display:none}
+.denied{animation:card-denied .3s ease}
+@keyframes card-denied{25%,75%{translate:-4px 0}50%{translate:4px 0}}
+@media(prefers-reduced-motion:reduce){.campaign-card{transition:none}.denied{animation:none}}
+.card-status{background:#35362e;bottom:1.5%;height:15.5%}
+.campaign-progress{right:2.5%;top:46.1%;width:13.5%;height:3.2%;text-align:right;background:#ded2bc;box-sizing:border-box}
+.campaign-mute{display:grid;place-items:center}
+.tank-reload{position:fixed;transform:translate(-50%,-100%);width:112px;padding:6px 8px;background:#151b18cc;border:1px solid #d2be8066;border-radius:3px;color:#f1e2b6;pointer-events:none;text-align:center;font:12px 'Songti SC',serif;box-shadow:0 2px 8px #0005}
+.tank-reload[hidden]{display:none}
+.tank-reload-track{height:5px;margin-top:5px;background:#ffffff26;overflow:hidden;border-radius:2px}
+.tank-reload-track i{display:block;height:100%;width:100%;background:#e7c979;transform-origin:left center}
+/* Keep briefing art and all overlaid controls in one undistorted coordinate space. */
+.dossier-screen{background:#1b1e18}
+.dossier-screen .dossier{
+  position:absolute;inset:auto;left:50%;top:50%;
+  width:min(100vw,calc(100vh * 1672 / 941));height:auto;min-height:0;
+  aspect-ratio:1672/941;transform:translate(-50%,-50%);
+  background-size:contain;background-repeat:no-repeat;background-position:center;
+  container-type:inline-size;
+}
+.dossier .history-paper{left:54%;width:37.5%}
+.dossier .history-reader p{font-size:clamp(16px,1.4cqw,24px)}
+.dossier .history-reader h3{font-size:clamp(18px,1.55cqw,27px)}
+.dossier-actions .start{font-size:clamp(14px,2cqw,32px)}
+.dossier #refitTab{font-size:clamp(14px,1.8cqw,29px);letter-spacing:1px}
+/* Match live menu labels to the weight of the illustrated Songti lettering. */
+.campaign-progress,.card-status{
+  font-family:"Songti SC","STSong","SimSun","Noto Serif CJK SC",serif;
+  font-weight:700;
+  font-synthesis:weight;
+  letter-spacing:.04em;
+}
+/* Dynamic campaign dossiers keep the approved parchment layout, with live maps and titles. */
+.multi-campaign .campaign-brief-title{position:absolute;left:35%;top:1%;width:31%;height:13%;background:#d9cbb1;text-align:center;color:#27251d;display:grid;align-content:center}
+.campaign-brief-title h1{font:900 clamp(22px,4cqw,70px) 'Songti SC',serif;margin:0;line-height:1.1}
+.campaign-brief-title p{font:700 clamp(12px,1.7cqw,29px) 'Songti SC',serif;margin:4px 0 0}
+.multi-campaign .map-paper{display:block;position:absolute;left:10.2%;top:16.3%;width:41.2%;height:72.2%;padding:0;background:#d6ceb5;border:1px solid #85795a}
+.multi-campaign .map-paper header,.multi-campaign .map-paper p{display:none}
+.multi-campaign #briefMap{display:block;width:100%;height:100%;object-fit:contain}
+.multi-campaign .brief-photo{display:block;position:absolute;left:52.65%;top:15.9%;width:39.9%;height:31.2%;padding:0;border:0;border-radius:6px;overflow:hidden}
+.multi-campaign .brief-photo img{display:block;width:100%;height:100%;object-fit:cover}
+.multi-campaign .brief-photo span{display:none}
+.campaign-brief-meta{font:700 14px/1.7 'Songti SC',serif;padding-bottom:8px;border-bottom:1px solid #8b7c5b55;margin-bottom:10px;color:#4e4637}
+.campaign-card.unlocked .card-status{background:#503c13;color:#ffe79c}
+.campaign-card.unlocked{border-color:#bd9c58}
+.multi-campaign .map-paper,.multi-campaign .brief-photo{display:block !important}
+.multi-campaign #briefMap{max-height:none;max-width:none;aspect-ratio:auto;mix-blend-mode:normal}
+.multi-campaign .campaign-brief-title{background:radial-gradient(ellipse at center,#ded0b7 65%,#ded0b7ee 85%,#ded0b700 100%);}
+.audio-credits{display:block;margin-top:14px;color:#cbbd99;text-align:center;font-size:13px}
+
+/* Illustrated briefing art; live tactical maps remain in combat. */
+.multi-campaign #briefMap{display:none!important}
+.multi-campaign .map-paper{overflow:hidden;background:#d9cbb1;box-shadow:inset 0 0 12px #64513655}
+.painted-brief-map{display:block;width:100%;height:100%;object-fit:contain;filter:sepia(.08);}
+
+/* Match the printed Song type in the painted dossier. */
+@font-face{font-family:BriefingDisplay;src:local("STSongti-SC-Black"),local("Songti SC Black");font-weight:900;font-display:swap}
+:root{--briefing-serif:"Songti SC","STSong","SimSun",serif;--briefing-display:BriefingDisplay,"Songti SC","STSong",serif}
+.dossier,.dossier button,.campaign-card,.campaign-back{font-family:var(--briefing-serif)}
+.campaign-brief-title h1,.campaign-brief-title p,.dossier .history-reader h3,.dossier .history-chapters button,.dossier .start-btn,.card-status{font-family:var(--briefing-display)!important;font-weight:900!important}
+.dossier .history-reader p{font-family:var(--briefing-serif);font-weight:600;color:#30291e;letter-spacing:.025em;line-height:1.9}
+.dossier .history-reader h3{letter-spacing:.06em;color:#30291e}
+.dossier .campaign-brief-meta,.dossier .reading-tools,.dossier .reading-tools button{font-family:var(--briefing-serif);font-weight:700}
+.dossier button{font-weight:800;letter-spacing:.06em}
+
+.music-start-hint{position:absolute;left:calc(2% + 54px);bottom:2%;height:44px;display:flex;align-items:center;color:#eadcba;font:600 clamp(12px,1.05vw,18px) "Songti SC",serif;letter-spacing:.06em;pointer-events:none;text-shadow:0 1px 3px #000}
+.music-start-hint[hidden]{display:none}

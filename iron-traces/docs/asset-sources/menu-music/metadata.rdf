@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:mp="http://www.mutopiaproject.org/piece-data/0.1/">
+
+<rdf:Description rdf:about=".">
+    <mp:title>Symphony No. 7 in A Major (2nd Movement: Allegretto)</mp:title>
+    <mp:composer>BeethovenLv</mp:composer>
+    <mp:opus>Op. 92</mp:opus>
+    <mp:lyricist>n/a</mp:lyricist>
+    <mp:for>Orchestra: Flutes, Oboes, Clarinets, Bassoons, Horns, Trumpets, Timpani, Violins, Viola, 'Cello, Bass</mp:for>
+    <mp:date>1811-12</mp:date>
+    <mp:style>Classical</mp:style>
+    <mp:metre/>
+    <mp:arranger>n/a</mp:arranger>
+    <mp:source>Litolff Verlag</mp:source>
+    <mp:licence>Public Domain</mp:licence>
+
+    <mp:lyFile>Symphony7_2-lys.zip</mp:lyFile>
+    <mp:midFile>Symphony7_2.mid</mp:midFile>
+    <mp:psFileA4>Symphony7_2-a4.ps.gz</mp:psFileA4>
+    <mp:pdfFileA4>Symphony7_2-a4.pdf</mp:pdfFileA4>
+    <mp:psFileLet>Symphony7_2-let.ps.gz</mp:psFileLet>
+    <mp:pdfFileLet>Symphony7_2-let.pdf</mp:pdfFileLet>
+    <mp:pngFile>Symphony7_2-preview.png</mp:pngFile>
+    <mp:pngHeight>571</mp:pngHeight>
+    <mp:pngWidth>511</mp:pngWidth>
+
+    <mp:id>Mutopia-2005/08/21-595</mp:id>
+    <mp:maintainer>Stelios Samelis</mp:maintainer>
+    <mp:maintainerEmail>1zante@otenet.gr</mp:maintainerEmail>
+    <mp:maintainerWeb/>
+    <mp:moreInfo/>
+    <mp:lilypondVersion>2.6.3</mp:lilypondVersion>
+</rdf:Description>
+
+</rdf:RDF>

@@ -1,0 +1,68 @@
+{
+  "generator": "ImageGen built-in",
+  "initial": [
+    {
+      "id": "P01-top-down",
+      "prompt": "Use case: ui-mockup. Generate one polished photorealistic 3D browser tank game visual prototype, wide landscape 16:9. This is a playable-looking tactical battlefield screenshot concept, not poster art. Late July 1944 Normandy countryside, authentic olive US M4 Sherman with short 75 mm gun, slightly high three-quarter TOP DOWN camera about 55 degrees, broad readable tactical map. The player tank center-lower, small recognizable enemy tanks across a farm road. Clear varied environments: a muddy marshy green pool on left with winding drivable muddy margin, a dense stand of trees on upper left that forms impassable terrain with a clear road around, stone farmhouse ruins upper right, BREAKABLE RED BRICK garden walls with one fresh blasted opening and fragments. Both tanks leave physically plausible two parallel caterpillar tread grooves continuously behind their tracks, include one turning curve visible in muddy foreground. Soft summer daylight, realistic PBR metal wear, mud, leaves, modest smoke, restrained cinematic contrast, bright readable environment not dark. Sophisticated unobtrusive military game HUD, small ivory typography on translucent charcoal strips, muted olive and amber. Top left exact Chinese text “诺曼底 · 树篱缺口”, next line “突破村庄防线”. Bottom left small tank condition icon, bottom right ammunition icons with labels “穿甲弹” and “高爆弹”, top right small minimap. Tiny lower-edge caption exactly “概念原型 · 非运行截图”. Keep tanks human-scale and geometrically plausible, no modern vehicles, no sci-fi blue lasers, no glowing grids, no oversized cartoon tokens, no full-screen fog, no infographic arrows. Fine wheel suspension and two separate caterpillar tracks.",
+      "source": "/Users/chenzixin/.codex/generated_images/01a0893c-4cca-7dc0-bd40-a4c0d13c8479/exec-84a208b0-6c66-47d1-bc51-1e0a1235a5fb.png",
+      "filename": "P01-top-down.png",
+      "generator": "ImageGen built-in",
+      "status": "concept, not running game"
+    },
+    {
+      "id": "P02-over-shoulder",
+      "prompt": "Use case: ui-mockup. Generate one photorealistic 3D WWII tank game OVER-THE-SHOULDER actual-play camera visual prototype, wide 16:9. Normandy late July 1944 village outskirts. Camera just behind and above the turret of an olive US M4 Sherman with a SHORT 75 mm gun, rear three-quarter view, full tank occupying lower center about one quarter frame, barrel points toward broken red brick garden wall 35 meters ahead. The camera can see close muddy road behind the tank in foreground. TWO deep shallow realistic caterpillar track imprints follow each track's exact path, showing rectangular tread bars, compressed wet soil, raised groove edges, with broad gently curved trajectory toward tank. Imprints are on the ground, not floating or disconnected. Rust stains, dirt on road wheels, believable small wet-mud splashes. Dense leafy forest left of road, marsh reeds and wet mud left foreground, broken brick wall and farm buildings right, distant hostile tank partially behind opening. Natural overcast bright daylight, olive brown green palette, excellent readable details, not excessively grim dark. Minimal centered reticle, top-left exact Chinese “诺曼底 · 控制路口” and “占领道路节点”, small bottom reload indicator “装填中”, compact top-right minimap, ammo corner labels “穿甲弹” “高爆弹”. Tiny caption “概念原型 · 非运行截图”. This should look like realistic gameplay including readable aim and maneuver space rather than concept-painting drama. No aerial camera, no enormous flags, no modern main battle tanks, no HUD covering tracks.",
+      "source": "/Users/chenzixin/.codex/generated_images/01a0893c-4cca-7dc0-bd40-a4c0d13c8479/exec-a9ae2b46-7293-434a-a0cd-7ac285762149.png",
+      "filename": "P02-over-shoulder.png",
+      "generator": "ImageGen built-in",
+      "status": "concept, not running game"
+    },
+    {
+      "id": "P03-mission-brief",
+      "prompt": "Use case: ui-mockup. One high-fidelity polished Chinese WWII tank game pre-mission briefing screen in wide landscape 16:9. Art direction military archive paper meets elegant muted olive UI, warm off-white paper, dark ink, restrained amber accents, readable typography. Upper title exactly “作战简报” with smaller “阿登 · 打通走廊”. Left 48%: attractive paper tactical map with approximate forest roads, Bastogne labeled “巴斯托涅” above, Assenois labeled “阿瑟努瓦” below, a simple upward planned route, legend “示意地图”. Not claimed a precise historical map. Upper right 45%: highly realistic olive M4A3E2 Sherman Jumbo heavy assault variant preview, period correct SHORT 75 mm cannon (NOT the 1945 long 76 mm retrofit), thicker frontal hull and turret, two intact tracks, rear three-quarter or side view. No tank vehicle photographs, render as game 3D asset. Lower right text hierarchy with EXACT short Chinese labels and content: “1944年12月26日”; “所属部队”; “美军第4装甲师”; “第37坦克营 C连”; “本局坦克”; “M4A3E2 · 75毫米炮”; “战局背景”; “巴斯托涅守军仍被围困，解围部队正沿道路向北推进。”; “本局任务”; “打通道路，与守军会合。” Bottom right primary button “开始行动” secondary “查看装备”. Small lower left “史实背景与任务改编分开说明”. Tiny clear lower-edge caption “概念原型 · 非运行截图”. Clean spatial hierarchy no nested dashboard card clutter. Avoid spelling errors, black unreadable panels, modern controls, giant paragraph walls, spurious historical unit names. All Chinese exact.",
+      "source": "/Users/chenzixin/.codex/generated_images/01a0893c-4cca-7dc0-bd40-a4c0d13c8479/exec-672d0b54-c1ec-4637-8dfc-7cf992d309c5.png",
+      "filename": "P03-mission-brief.png",
+      "generator": "ImageGen built-in",
+      "status": "concept, not running game"
+    },
+    {
+      "id": "P04-refit",
+      "prompt": "Use case: ui-mockup. Generate one refined realistic WWII tank browser game BETWEEN-MISSION REFIT screen, landscape 16:9. A practical Allied field maintenance shelter with warm daytime diffused light, authentic olive 75mm M4 Sherman centered-left on muddy ground, simple canvas canopy, period crates and tools, visible short gun barrel, metal wear and road wheels; no neon sci-fi hangar. Right third is a cream military inventory paper UI with restrained typography. Header exact “任务整备”; subtitle “诺曼底 · 控制路口”. Show main tank label “M4 谢尔曼 · 75毫米炮”. Three clearly differentiated readable loadout rows illustrated with plausible simple shell icons: “均衡配给”, “反坦克配给”, “攻坚配给”. Selected second row outlined olive, one concise explanation “增加穿甲弹配给，适合装甲交战。” A smaller factual line “配给变化不会改变主炮口径”. Bottom selected summary: “穿甲弹” and “高爆弹”, no invented statistical numbers. Bottom right main button “确认装备”, secondary “返回简报”. Small left footer label “本局装备”. Tiny caption “概念原型 · 非运行截图”. UI reflects real historical military logistics, no glowing upgrade stars, no magical damage multipliers, no modern MBTs, no futuristic UI. The user must clearly understand this is equipment planning before a mission, not repair during active combat.",
+      "source": "/Users/chenzixin/.codex/generated_images/01a0893c-4cca-7dc0-bd40-a4c0d13c8479/exec-7ad76ced-40e3-4473-981f-fea7aa9891f8.png",
+      "filename": "P04-refit.png",
+      "generator": "ImageGen built-in",
+      "status": "concept, not running game"
+    },
+    {
+      "id": "P05-track-study",
+      "prompt": "Use case: scientific-educational. Create a beautiful photorealistic 3D game environment material prototype sheet in landscape 16:9, four equal panels 2x2 separated by thin warm-white gutters. Topic: physically believable WWII tank CATERPILLAR TRACK IMPRINTS IN TERRAIN, not rubber tire wheel prints. Each panel is a low oblique closeup with authentic repeating transverse rectangular steel tread bar imprints and exactly paired left/right caterpillar paths. Panel top-left “泥地直行”: two continuous shallow sunken tread trenches in wet brown mud, compressed base, raised edges, small soft specular pools. Panel top-right “雪地转弯”: two parallel curved compressed snow grooves, dirty snow pushed outward, leading to a distant partial Sherman rear at top-right. Panel bottom-left “原地转向”: plausible swept and overlapping concentric caterpillar arcs over earth, left and right counter-rotating tracks scuff an annular area; avoid two perfect smooth tire circles, show rectangular steel tread marks and churned middle. Panel bottom-right “石路泥迹”: muddy repeated caterpillar pads deposited on uneven cobblestones, stones stay firm and undeformed; two dirty track paths, no deep trench through stone. Natural neutral daylight, realistic game material detail, a small segment of an actual tank track visible at edge only when useful. All labels clean exact Chinese, title at top “履带压痕 · 地表差异”, tiny bottom caption “概念原型 · 非运行截图”. No bullets or complex infographic callouts, no sci-fi glowing lines, no car tire tread patterns, no desert military poster, no claims of implemented physics.",
+      "source": "/Users/chenzixin/.codex/generated_images/01a0893c-4cca-7dc0-bd40-a4c0d13c8479/exec-f8b011b3-06dc-48a9-8e3f-8e7f2d6adb88.png",
+      "filename": "P05-track-study.png",
+      "generator": "ImageGen built-in",
+      "status": "concept, not running game"
+    }
+  ],
+  "refinements": [
+    {
+      "id": "P01-top-down-v2",
+      "path": "/Users/chenzixin/.codex/.chatgpt-projects/g-p-6aa21b3460688191af6e7c0b2f324753/outputs/tank-battle-design/prototypes/P01-top-down.png",
+      "prompt": "Edit the provided game prototype image. Keep the realistic Normandy village theme, quality, colors, dense impassable woodland, muddy swamp, breakable brick wall with a breached opening, olive US 75mm Sherman and restrained Chinese HUD. Main essential change: lift the camera to a TRUE HIGH TACTICAL OVERHEAD view, about 75-80 degrees downward, near orthographic, NO visible horizon or sky. Show a broad roughly square battlefield from above with all routes legible, the tanks much smaller relative to map (player tank about 7% image width) and roofs clearly visible. This must look visibly different from a third-person chase camera. Keep winding paired caterpillar tread imprints around the swamp and behind tanks. Make enemy tanks visually WWII German Panzer IV, not Soviet T-34s. Top-left text stays '诺曼底 · 树篱缺口' and '突破村庄防线'. Simplify bottom-left to vehicle silhouette and a plain health bar WITHOUT numbers or gear indicator. Bottom-right ammo shows '穿甲弹 14' and '高爆弹 22', exactly 36 total. Remove the bottom-center row of decorative binocular/sword/skill buttons entirely, no extra capabilities. Remove named real city direction/distance signs: use weathered unreadable generic farm signposts. Add small exact lower caption '概念原型 · 非运行截图'. Preserve landscape 16:9 and photorealistic Three.js-target visual direction.",
+      "result_path": "/Users/chenzixin/.codex/generated_images/01a0893c-4cca-7dc0-bd40-a4c0d13c8479/exec-279123f0-0745-4b0a-8f88-f5af92e143f5.png",
+      "output": "P01-top-down-v2.png"
+    },
+    {
+      "id": "P02-over-shoulder-v2",
+      "path": "/Users/chenzixin/.codex/.chatgpt-projects/g-p-6aa21b3460688191af6e7c0b2f324753/outputs/tank-battle-design/prototypes/P02-over-shoulder.png",
+      "prompt": "Make only these two local corrections to this existing WWII tank gameplay concept. Preserve camera, player tank, entire environment, lighting, composition, realistic mud tread imprints, target, all other HUD and tiny concept watermark exactly. In bottom-right ammunition UI, change current numbers 32 and 8 to exactly 24 and 12 respectively, so 穿甲弹 24 and 高爆弹 12, total 36. Keep reload indicator 4.3s, which is a remaining countdown. On the signpost at the left edge, remove readable real place names and numeric kilometer distances and leave plain weathered blank wooden farm signs. Do not modify any other part. Keep same image dimensions and quality.",
+      "result_path": "/Users/chenzixin/.codex/generated_images/01a0893c-4cca-7dc0-bd40-a4c0d13c8479/exec-0201dac2-9982-462e-8787-1170b2ade513.png",
+      "output": "P02-over-shoulder-v2.png"
+    }
+  ],
+  "selected": [
+    "P01-top-down-v2.png",
+    "P02-over-shoulder-v2.png",
+    "P03-mission-brief.png",
+    "P04-refit.png",
+    "P05-track-study.png"
+  ]
+}

@@ -1,0 +1,98 @@
+{
+  "count_definition": "Only Han characters in the 30 authored chapters. Excludes headings, tables, source-list sections, fenced and inline code, markdown links and URL addresses; exact repeated long paragraphs deducted. Front matter, prototype captions, contents and source appendix excluded.",
+  "substantive_body_han": 101343,
+  "all_chapter_han_before_exclusions": 107341,
+  "exact_duplicate_long_paragraphs": 0,
+  "duplicate_han_excluded": 0,
+  "chapter_count": 30,
+  "prototype_count": 5,
+  "requirement_over_50000": true,
+  "parts": [
+    {
+      "file": "01-foundation.md",
+      "han_all": 16485,
+      "han_conservative": 15716,
+      "bytes": 54997,
+      "sha256": "6552a96dea383758e2fa4648f0cd87b551d09002e788b95d0348515c048f6f78"
+    },
+    {
+      "file": "02-missions.md",
+      "han_all": 15970,
+      "han_conservative": 14734,
+      "bytes": 53269,
+      "sha256": "c9dce9d2655b3d643a5669d154ff64714f377b314bdac8394f67f8e675398721"
+    },
+    {
+      "file": "03-combat.md",
+      "han_all": 14803,
+      "han_conservative": 13273,
+      "bytes": 49958,
+      "sha256": "91c8ff0de50e7bbf389ef976a2d4465e7c97bb6cf54a0d2778a015db9f4602b6"
+    },
+    {
+      "file": "04-simulation.md",
+      "han_all": 14665,
+      "han_conservative": 14278,
+      "bytes": 48158,
+      "sha256": "af448005965d5253c53d9624768cf41d45f6435878d4b684235ff5a96e6dd8d1"
+    },
+    {
+      "file": "05-world.md",
+      "han_all": 16080,
+      "han_conservative": 15459,
+      "bytes": 53446,
+      "sha256": "ff25a66e9191dce943393e5f3f6b58e98ebf0fbc15e664920bd542cf17f0d5de"
+    },
+    {
+      "file": "06-audio-ui.md",
+      "han_all": 15364,
+      "han_conservative": 14240,
+      "bytes": 51667,
+      "sha256": "f25fc45efa3ea39ba1eadfba8041425696651688d6d39eb2d8d54d646c56fa33"
+    },
+    {
+      "file": "07-delivery.md",
+      "han_all": 13974,
+      "han_conservative": 13643,
+      "bytes": 46500,
+      "sha256": "bfbdbd85d75baa62c9500e53766d4921e1cad49a0e7c27a44ff31427b8a8ced6"
+    }
+  ],
+  "chapter_titles": [
+    "第01章 产品愿景与体验边界",
+    "第02章 历史改编方法、资料层级与史实一致性",
+    "第03章 每局背景、所属军队与车组身份的叙事结构",
+    "第04章 作战简报的信息设计、文案与完整流程",
+    "第05章 K01：库尔斯克南线·守住通路",
+    "第06章 K02：库尔斯克南线·局部反击",
+    "第07章 N01：诺曼底·树篱缺口",
+    "第08章 N02：诺曼底·控制路口",
+    "第09章 A01：阿登·补给路口",
+    "第10章 A02：阿登·打通走廊",
+    "第11章 坦克车型、车组身份与可感知的车辆特性",
+    "第12章 武器、弹种、装甲与命中反馈",
+    "第13章 任务间换装、补给维修与成长节奏",
+    "第14章 敌我平衡、难度与玩家学习",
+    "第15章 驾驶输入与车辆运动",
+    "第16章 敌人感知、寻路与攻击决策",
+    "第17章 任务状态机、重试与进度保存",
+    "第18章 战场系统协作、异常恢复与运行公平性",
+    "第19章 战场空间、写实美术与资产制作要求",
+    "第20章 沼泽、密林、可破坏墙与统一地表模型",
+    "第21章 双履带压痕的完整设计",
+    "第22章 双视角、瞄准、遮挡与画面可读性",
+    "第23章 音效设计与战场声音矩阵",
+    "第24章 空间声音、混音、资源与听测",
+    "第25章 全流程游戏界面与中文文案",
+    "第26章 可访问性、设置、提示与体验验证",
+    "第27章 项目架构、数据契约与资产管理",
+    "第28章 分阶段执行路线与可验收门槛",
+    "第29章 测试计划与代表性验收用例",
+    "第30章 性能预算、质量审查与交付追踪"
+  ],
+  "status": "design_document_and_image_concepts_only; game_not_implemented; no_pdf",
+  "markdown_bytes": 382841,
+  "html_bytes": 431747,
+  "source_links": 22,
+  "markdown_sha256": "f8e658ba72f637e51f3b5665a3b3733f3b492a318b13623d6a1276e57a8b99f7"
+}
